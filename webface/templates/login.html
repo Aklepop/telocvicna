@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block header %}Login -- zde se prosím přihlas{% endblock %}
+
+
+{% block content %}
+
+<form method="post">
+
+<h1>Login</h1>
+
+<p>Uživatelské jméno <input name="jmeno" type="text" /></p> 
+<p>Heslo <input name="heslo" type="password" /></p> 
+<p><input type="submit" value="Přihlásit" /></p>
+
+</form>
+
+{% endblock content %}

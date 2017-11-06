@@ -21,10 +21,10 @@
 
   <header>
     <h1>{%block header%}Flask{%endblock%}
-      <a href="{{url_for('index')}}">App</a></h1>
+      <a href="{{ url_for('index') }}">App</a></h1>
     <nav>
       <ul>
-        <li><a href="{{url_for('super')}}">Super</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
         <li>Úžasný</li>
         <li>Bombastický</li>
         <li><a href="/number/42">Číslo 42</a></li>

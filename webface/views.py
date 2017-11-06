@@ -13,10 +13,12 @@ def index():
     return render_template('base.html')
 
 
-@app.route('/super/')
-def super():
-    text = "Dnes je máme programování, což mi udělalo velikou radost :-)"
-    return render_template('super.html', text=text)
+@app.route('/login/', methods=['GET', 'POST'])
+def login():
+    jmeno = request.form.get('jmeno')
+    heslo = request.form.get('heslo')
+    print(jmeno, heslo)
+    return render_template('login.html')
 
 
 @app.route('/number/<i>')
