@@ -2,8 +2,8 @@
 # Soubor: views.py
 # Úloha:  Flask --- pohledy
 ############################################################################
-from flask import (render_template, Markup, request,
-                   redirect, session)
+from flask import (render_template, request, flash,
+                   redirect, session, url_for)
 from webface import app
 ############################################################################
 
@@ -13,12 +13,29 @@ def index():
     return render_template('base.html')
 
 
-@app.route('/login/', methods=['GET', 'POST'])
+@app.route('/login/', methods=['GET'])
 def login():
+    return render_template('login.html')
+
+
+@app.route('/login/', methods=['POST'])
+def login_post():
     jmeno = request.form.get('jmeno')
     heslo = request.form.get('heslo')
     print(jmeno, heslo)
-    return render_template('login.html')
+    if jmeno == 'marek' and heslo == 'fixa':
+        session['jmeno'] = jmeno
+        flash('Úspěšně jsi se přihlásil.', 'zelena')
+        return redirect(url_for('index'))
+    else:
+        flash('chybné jméno nebo heslo', 'cervena')
+        return redirect(url_for('login'))
+
+
+@app.route('/logout/', methods=['GET'])
+def logout():
+    session.pop('jmeno', None)
+    return redirect(url_for('login'))
 
 
 @app.route('/number/<i>')

@@ -18,6 +18,16 @@
 
 <body>
 {%block body%}
+  
+  <div class="jmeno">
+    {%- if 'jmeno' in session -%}
+    <p>Jsi přihlášen jako {{session['jmeno']}}. 
+    <a href="{{ url_for('logout') }}">Odhlásit!</a></p>
+    {%- else -%}
+    <p>Nejsi přihlášen.
+    <a href="{{ url_for('login') }}">Přihlásit!</a></p>
+    {%- endif -%}
+  </div>
 
   <header>
     <h1>{%block header%}Flask{%endblock%}
@@ -35,6 +45,15 @@
   <main>
     <article>
 
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class=flashes>
+    {% for category, message in messages %}
+      <p class="{{ category }}">{{ message }}</p>
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
 
       {%block content%}
 			<h1>My article</h1>

@@ -22,6 +22,24 @@ dd {
     list-style-type: square;
 }
 
+.flashes {
+    text-align: center;
+    font-size: 130%;
+}
+
+.cervena {
+    color: red;
+}
+.zelena {
+    color: green;
+}
+
+.jmeno {
+    width: 200px;
+    float: right;
+    border: solid purple 3px;
+    padding: 5px;
+}
 
 footer {
     padding: 0.1ex 2em;
