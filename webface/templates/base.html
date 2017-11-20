@@ -33,11 +33,10 @@
     <h1>{%block header%}Flask{%endblock%}
       <a href="{{ url_for('index') }}">App</a></h1>
     <nav>
-      <ul>
+      <ul class="hlmenu">
+        <li><a href="{{ url_for('index') }}">Index</a></li>
+        <li><a href="{{ url_for('tajne') }}">Super tajné</a></li>
         <li><a href="{{ url_for('login') }}">Login</a></li>
-        <li>Úžasný</li>
-        <li>Bombastický</li>
-        <li><a href="/number/42">Číslo 42</a></li>
       </ul>
     </nav>
   </header>
