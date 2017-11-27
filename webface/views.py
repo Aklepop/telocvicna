@@ -29,14 +29,17 @@ pwhash['katka'] = 'pbkdf2:sha1:1000$2zq2mD5B$66bcce17e76eb41597432d8d603f7cdd6b4
 def login_post():
     jmeno = request.form.get('jmeno')
     heslo = request.form.get('heslo')
-    print(jmeno, heslo)
+    next = request.args.get('next')
     if check_password_hash(str(pwhash.get(jmeno)), heslo):
         session['jmeno'] = jmeno
         flash('Úspěšně jsi se přihlásil.', 'zelena')
-        return redirect(url_for('index'))
+        return redirect(next or url_for('index'))
     else:
         flash('chybné jméno nebo heslo', 'cervena')
-        return redirect(url_for('login'))
+        if next:
+            return redirect(url_for('login', next=next))
+        else:
+            return redirect(url_for('login'))
 
 
 @app.route('/logout/', methods=['GET'])
@@ -51,7 +54,7 @@ def tajne():
         return render_template('tajne.html')
     else:
         flash('Tato stránka je jen pro přihlášené.', 'oranzova')
-        return redirect(url_for('login'))
+        return redirect(url_for('login', next=request.full_path))
 
 
 @app.errorhandler(404)

@@ -37,6 +37,19 @@ dd {
     color: orange;
 }
 
+.hlmenu li {
+    display: inline-block;
+}
+.hlmenu li a {
+    display: block;
+    padding: 9px;
+    border: 2px dotted orange;
+}
+.hlmenu li a:href {
+    background-color: orange;
+    border-width: 0px;
+}
+
 .jmeno {
     width: 200px;
     float: right;
