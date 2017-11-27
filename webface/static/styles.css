@@ -40,14 +40,14 @@ dd {
 .hlmenu li {
     display: inline-block;
 }
-.hlmenu li a {
+.hlmenu a {
     display: block;
     padding: 9px;
     border: 2px dotted orange;
 }
-.hlmenu li a:href {
-    background-color: orange;
-    border-width: 0px;
+.hlmenu a:hover{
+    text-decoration: none;
+    border-style: solid;
 }
 
 .jmeno {
